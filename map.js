@@ -1,11 +1,22 @@
 var mymap = L.map('mapid').setView([0, 0], 2);
 
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-    maxZoom: 18,
+L.tileLayer("https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=GgRZGCIPl5FvjON2sSKD", {
+  maxZoom: 20,
 }).addTo(mymap);
 
 mymap.on('click', function(e) {
     navigator.clipboard.writeText(`Lat: ${e.latlng.lat}, Lng: ${e.latlng.lng}`);
-    alert("Copied Latitude and Longitude to Clipboard");
+    let alertBox = L.control();
+    alertBox.onAdd = function () {
+        this._div = L.DomUtil.create('div', 'alert');
+        this.update();
+        return this._div;
+    };
+    alertBox.update = function () {
+        this._div.innerHTML = "Copied Latitude and Longitude to Clipboard";
+        setTimeout(() => {
+            this._div.parentNode.removeChild(this._div);
+          }, 3000);
+    };
+    alertBox.addTo(mymap);
 });
