@@ -1,5 +1,5 @@
 body {
-    font-family: 'Inter',Arial, serif;
+    font-family: 'Inter', Arial, serif;
     font-size: 16px !important; /* Default font size */
   }
   
@@ -21,11 +21,32 @@ body {
     background-color: rgba(0, 0, 0, 0.75);
     border-radius: 10px;
     text-align: center;
-    box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
+    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
     transition: visibility 0s, opacity 0.5s linear;
+    animation: slideUp 0.5s ease-out; /* Add slide-up animation to all alerts */
   }
   
-  .alert:before, .alert:after {
+  @keyframes slideUp {
+    0% {
+      transform: translate(-50%, 100%);
+    }
+    100% {
+      transform: translate(-50%, 0);
+    }
+  }
+  
+  .alert-top {
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  .alert.slide-up {
+    animation: slideUp 0.5s ease-out;
+  }
+  
+  .alert:before,
+  .alert:after {
     position: absolute;
     content: '';
     width: 0;
@@ -53,5 +74,4 @@ body {
     visibility: visible;
     opacity: 1;
   }
-
   
