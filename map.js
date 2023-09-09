@@ -4,8 +4,8 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 {
   maxZoom: 20,
   attribution: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-  tileSize: 512,
-  zoomOffset: -1,
+  tileSize: 1024,
+  zoomOffset: -2,
   id: 'mapbox/streets-v11'
 }).addTo(mymap);
 

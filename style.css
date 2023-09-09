@@ -1,5 +1,12 @@
 body {
-    font-family: 'Inter', Arial, serif;
+    font-family: 'Inter',Arial, serif;
+    font-size: 16px; /* Default font size */
+  }
+  
+  @media screen and (max-width: 900px) {
+    body {
+      font-size: 22px; /* Increase font size for mobile devices */
+    }
   }
   
   .alert {
