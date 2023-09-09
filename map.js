@@ -1,4 +1,4 @@
-var mymap = L.map('mapid').setView([-2.5489, 118.0149], 5);
+var mymap = L.map('mapid').setView([-2.5489, 118.0149], 4);
 
 L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}&hl=en&key=AIzaSyD0U_Q9bCY4FvFayVUM2vxFrRzuChJkKtY', {
     minZoom: 2,
