@@ -1,5 +1,6 @@
 body {
-    font-family: Arial, serif;
+    font-family: 'Inter', Arial, serif;
+    line-height: 0.2em;
   }
   
   .alert {
@@ -46,4 +47,3 @@ body {
     visibility: visible;
     opacity: 1;
   }
-  

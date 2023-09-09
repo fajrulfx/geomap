@@ -9,25 +9,15 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
   id: 'mapbox/streets-v11'
 }).addTo(mymap);
 
-var alertBox = null;
-var timeoutId = null;
-
 mymap.on('click', function(e) {
-  // Remove the previous alert box, if it exists
-  if (alertBox) {
-    clearTimeout(timeoutId);
-    alertBox.classList.remove('show');
-    setTimeout(() => alertBox.remove(), 500);
-  }
-
-  navigator.clipboard.writeText(`Lat: ${e.latlng.lat}, Lng: ${e.latlng.lng}`);
-  alertBox = document.createElement('div');
-  alertBox.innerHTML = "<p>The location is copied</p><p>Go to YouTube livechat</p>";
-
+  navigator.clipboard.writeText(`!guess ${e.latlng.lat} ${e.latlng.lng}`);
+  let alertBox = document.createElement('div');
+  alertBox.innerHTML = "<p>Koordinat telah di-copy</p><p>Silahkan paste di Youtube livechat</p>";
+  
   const size = mymap.getSize();
   const point = mymap.latLngToContainerPoint(e.latlng);
-
-  if (point.y < size.y / 2) {
+  
+  if(point.y < size.y / 2) {
     alertBox.style.top = `${point.y + 35}px`;
     alertBox.classList.add('alert', 'alert-top', 'show');
   } else {
@@ -38,21 +28,8 @@ mymap.on('click', function(e) {
 
   document.body.appendChild(alertBox);
 
-  timeoutId = setTimeout(() => {
+  setTimeout(() => {
     alertBox.classList.remove('show');
-    setTimeout(() => alertBox.remove(), 500);
-  }, 5000);
-});
-
-// Event listeners to remove the alert box when clicking elsewhere on the map or the document
-document.getElementById('mapid').addEventListener('click', function(e) {
-  e.stopPropagation();
-});
-
-document.addEventListener('click', function(e) {
-  if (alertBox) {
-    clearTimeout(timeoutId);
-    alertBox.classList.remove('show');
-    setTimeout(() => alertBox.remove(), 500);
-  }
+    setTimeout(() => alertBox.remove(), 2000);
+  }, 3000);
 });
