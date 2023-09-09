@@ -1,11 +1,11 @@
 body {
-    font-family: 'Inter', Arial, serif;
-    font-size: 16px !important; /* Default font size */
+    font-family: 'Inter',Arial, serif;
+    font-size: 16px; /* Default font size */
   }
   
   @media screen and (max-width: 900px) {
     body {
-      font-size: 24px !important; /* Increase font size for mobile devices */
+      font-size: 22px; /* Increase font size for mobile devices */
     }
   }
   
@@ -21,32 +21,11 @@ body {
     background-color: rgba(0, 0, 0, 0.75);
     border-radius: 10px;
     text-align: center;
-    box-shadow: 0px 3px 6px 0px rgba(0, 0, 0, 0.16);
+    box-shadow: 0px 3px 6px 0px rgba(0,0,0,0.16);
     transition: visibility 0s, opacity 0.5s linear;
-    animation: slideUp 0.5s ease-out; /* Add slide-up animation to all alerts */
   }
   
-  @keyframes slideUp {
-    0% {
-      transform: translate(-50%, 100%);
-    }
-    100% {
-      transform: translate(-50%, 0);
-    }
-  }
-  
-  .alert-top {
-    top: 10%;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  
-  .alert.slide-up {
-    animation: slideUp 0.5s ease-out;
-  }
-  
-  .alert:before,
-  .alert:after {
+  .alert:before, .alert:after {
     position: absolute;
     content: '';
     width: 0;
@@ -56,22 +35,22 @@ body {
   
   .alert-top:before {
     left: 50%;
-    bottom: 100%;
-    transform: translate(-50%);
+    top: -10px;
+    transform: translateX(-50%);
     border-width: 0 10px 10px 10px;
     border-color: transparent transparent rgba(0, 0, 0, 0.7) transparent;
-  }
-  
-  .alert-bottom:after {
+}
+
+.alert-bottom:after {
     left: 50%;
-    top: 100%;
-    transform: translate(-50%);
+    bottom: -10px;
+    transform: translateX(-50%);
     border-width: 10px 10px 0 10px;
     border-color: rgba(0, 0, 0, 0.7) transparent transparent transparent;
-  }
+}
+
   
   .alert.show {
     visibility: visible;
     opacity: 1;
   }
-  
