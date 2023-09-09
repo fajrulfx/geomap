@@ -4,15 +4,15 @@ L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_toke
 {
   maxZoom: 20,
   attribution: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-  tileSize: 512,
-  zoomOffset: -1,
+  tileSize: 1024,
+  zoomOffset: -2,
   id: 'mapbox/streets-v11'
 }).addTo(mymap);
 
 mymap.on('click', function(e) {
   navigator.clipboard.writeText(`!guess ${e.latlng.lat} ${e.latlng.lng}`);
   let alertBox = document.createElement('div');
-  alertBox.innerHTML = "<p>Koordinat telah di-copy</p><p>Silahkan paste di Youtube livechat</p>";
+  alertBox.innerHTML = "<p>Koordinat telah di-copy.<br>Silahkan paste di Youtube livechat</p>";
   
   const size = mymap.getSize();
   const point = mymap.latLngToContainerPoint(e.latlng);
