@@ -1,11 +1,11 @@
 body {
     font-family: 'Inter',Arial, serif;
-    font-size: 16px; /* Default font size */
+    font-size: 16px !important; /* Default font size */
   }
   
   @media screen and (max-width: 900px) {
     body {
-      font-size: 22px; /* Increase font size for mobile devices */
+      font-size: 24px !important; /* Increase font size for mobile devices */
     }
   }
   
@@ -53,3 +53,5 @@ body {
     visibility: visible;
     opacity: 1;
   }
+
+  

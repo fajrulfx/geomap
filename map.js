@@ -9,18 +9,18 @@ var map = new mapboxgl.Map({
   });
   
   map.addControl(new mapboxgl.NavigationControl());
-  
-  // Increase the font size of the labels
-  map.on('load', function () {
+
+  map.on('style.load', function () {
     var layers = map.getStyle().layers;
   
-    for (var i = 0; i < layers.length; i++) {
-      if (layers[i].type === 'symbol' && layers[i].layout['text-font'][0] === 'Open Sans Regular') {
-        map.setLayoutProperty(layers[i].id, 'text-size', ['interpolate', ['exponential', 1], ['zoom'], 0, 12, 10, 18]); // Adjust the font size as per your requirement
+    // Iterate through the layers and update the text size for label layers
+    layers.forEach(function (layer) {
+      if (layer.type === 'symbol' && layer.layout['text-field']) {
+        map.setLayoutProperty(layer.id, 'text-size', 20); // Adjust the value as needed
       }
-    }
+    });
   });
-  
+
   map.on('click', function(e) {
     navigator.clipboard.writeText(`!guess ${e.lngLat.lat.toFixed(5)} ${e.lngLat.lng.toFixed(5)}`);
     let alertBox = document.createElement('div');
