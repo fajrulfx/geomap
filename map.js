@@ -1,11 +1,11 @@
-var mymap = L.map('mapid').setView([0, 0], 2);
+var mymap = L.map('mapid').setView([-2.5489, 118.0149], 5); // Set the initial view to zoom in on Indonesia
 
 L.tileLayer("https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZmFqcnVsZngiLCJhIjoiY2xtYnpmNTdlMTFsOTNwbnpjMTlidXNyNCJ9.qr4HjsgqFyimJdxesB24og", 
 {
   maxZoom: 20,
   attribution: '© <a href="https://www.mapbox.com/map-feedback/">Mapbox</a> © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
-  tileSize: 1024,
-  zoomOffset: -2,
+  tileSize: 512,
+  zoomOffset: -1,
   id: 'mapbox/streets-v11'
 }).addTo(mymap);
 
