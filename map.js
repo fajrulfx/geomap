@@ -5,7 +5,9 @@ var map = new mapboxgl.Map({
     style: 'mapbox://styles/mapbox/streets-v11',
     center: [118.0149, -2.5489], // Indonesia coordinates
     zoom: 4, // Zoom level for Indonesia
-    attributionControl: false
+    attributionControl: false,
+    dragRotate: false,
+    pitchWithRotate: false
   });
   
   map.addControl(new mapboxgl.NavigationControl());
@@ -13,12 +15,15 @@ var map = new mapboxgl.Map({
   map.on('load', function() {
     var layers = map.getStyle().layers;
 
+    // Check if user is on a mobile device
+    var isMobile = window.innerWidth <= 900;
+
     for (var i = 0; i < layers.length; i++) {
         if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
             map.setLayoutProperty(layers[i].id, 'text-field', [
                 'format',
                 ['get', 'name_en'],
-                { 'font-scale': 1.2 }, // change these scale factors according to your preference
+                { 'font-scale': isMobile ? 2.0 : 1.3 }, // if mobile, font-scale is 2.0, else 1.2
             ]);
         }
     }
