@@ -1,7 +1,8 @@
 var mymap = L.map('mapid').setView([-2.5489, 118.0149], 5);
 
 L.tileLayer('http://{s}.google.com/vt/lyrs=m&x={x}&y={y}&z={z}&hl=en&key=AIzaSyD0U_Q9bCY4FvFayVUM2vxFrRzuChJkKtY', {
-    maxZoom: 20,
+    minZoom: 2,
+    maxZoom: 21,
     subdomains: ['mt0', 'mt1', 'mt2', 'mt3']
 }).addTo(mymap);
 
