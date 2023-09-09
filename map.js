@@ -10,16 +10,19 @@ var map = new mapboxgl.Map({
   
   map.addControl(new mapboxgl.NavigationControl());
 
-  map.on('style.load', function () {
+  map.on('load', function() {
     var layers = map.getStyle().layers;
-  
-    // Iterate through the layers and update the text size for label layers
-    layers.forEach(function (layer) {
-      if (layer.type === 'symbol' && layer.layout['text-field']) {
-        map.setLayoutProperty(layer.id, 'text-size', 20); // Adjust the value as needed
-      }
-    });
-  });
+
+    for (var i = 0; i < layers.length; i++) {
+        if (layers[i].type === 'symbol' && layers[i].layout['text-field']) {
+            map.setLayoutProperty(layers[i].id, 'text-field', [
+                'format',
+                ['get', 'name_en'],
+                { 'font-scale': 1.2 }, // change these scale factors according to your preference
+            ]);
+        }
+    }
+});
 
   map.on('click', function(e) {
     navigator.clipboard.writeText(`!guess ${e.lngLat.lat.toFixed(5)} ${e.lngLat.lng.toFixed(5)}`);
