@@ -17,7 +17,7 @@ mymap.on('click', function(e) {
     if (marker) {
         mymap.removeLayer(marker);
       }
-    navigator.clipboard.writeText(`!guess ${e.latlng.lat.toFixed(5)} ${e.latlng.lng.toFixed(5)}`);
+    navigator.clipboard.writeText(`!guess ${e.latlng.lat.toFixed(5)}, ${e.latlng.lng.toFixed(5)}`);
 
     marker = L.marker(e.latlng, { icon: markerIcon }).addTo(mymap);
     
